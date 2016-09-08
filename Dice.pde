@@ -17,10 +17,13 @@ void draw()
 			one.show();
 		}
 	}
+	fill(255, 0, 0);
+	rect(0, 400, 500, 100);
+	fill(255);
+	text("STOP", 200, 450);
 }
 void mousePressed()
 {
-	sumRoll = 0;
 	if(mouseY <= 400)
 	{
 		redraw();
@@ -28,11 +31,11 @@ void mousePressed()
 	}
 	else
 	{
-		noLoop();
 		fill(mouseX, mouseY, 255);
-		textSize(15);
+		textSize(25);
 		textAlign(CENTER);
-		text("Sum of Roll: " + sumRoll, 240, 430);
+		text("Sum of Roll: " + sumRoll, 240, 460);
+		noLoop();
 	}		
 }
 class Die //models one single dice cube
@@ -51,31 +54,32 @@ class Die //models one single dice cube
 	void roll()
 	{
 		//your code here
-		if((int)(Math.random() * 6 + 1) == 1)
+		int diceValue = (int)(Math.random() * 6 + 1);
+		if(diceValue == 1)
 		{
 			diceRoll = 1;
 		}
-		if((int)(Math.random() * 6 + 1) == 2)
+		if(diceValue == 2)
 		{
 			diceRoll = 2;
 		}
-		if((int)(Math.random() * 6 + 1) == 3)
+		if(diceValue == 3)
 		{
 			diceRoll = 3;
 		}
-		if((int)(Math.random() * 6 + 1) == 4)
+		if(diceValue == 4)
 		{
 			diceRoll = 4;
 		}
-		if((int)(Math.random() * 6 + 1) == 5)
+		if(diceValue == 5)
 		{
 			diceRoll = 5;
 		}
-		if((int)(Math.random() * 6 + 1) == 6)
+		if(diceValue == 6)
 		{
 			diceRoll = 6;
 		}
-		sumRoll = sumRoll + diceRoll;
+		sumRoll += diceRoll;
 		System.out.println(diceRoll);
 	}
 	void show()
