@@ -3,25 +3,37 @@ int sumRoll = 0;
 void setup()
 {
 	size(500, 500);
-	noLoop();
+	//noLoop();
 }
 void draw()
 {
 	//your code here
 	background(0);
-	for(int x = 100; x < 399; x += 50)
+	for(int x = 25; x < 499; x += 50)
 	{
-		for(int y = 50; y < 349; y += 50)
+		for(int y = 25; y < 399; y += 50)
 		{
 			one = new Die(x, y);
 			one.show();
 		}
 	}
-	text(sumRoll, 100, 350);
 }
 void mousePressed()
 {
-	redraw();
+	sumRoll = 0;
+	if(mouseY <= 400)
+	{
+		redraw();
+		loop();
+	}
+	else
+	{
+		noLoop();
+		fill(mouseX, mouseY, 255);
+		textSize(15);
+		textAlign(CENTER);
+		text("Sum of Roll: " + sumRoll, 240, 430);
+	}		
 }
 class Die //models one single dice cube
 {
@@ -43,35 +55,74 @@ class Die //models one single dice cube
 		{
 			diceRoll = 1;
 		}
-		else if((int)(Math.random() * 6 + 1) == 2)
+		if((int)(Math.random() * 6 + 1) == 2)
 		{
 			diceRoll = 2;
 		}
-		else if((int)(Math.random() * 6 + 1) == 3)
+		if((int)(Math.random() * 6 + 1) == 3)
 		{
 			diceRoll = 3;
 		}
-		else if((int)(Math.random() * 6 + 1) == 4)
+		if((int)(Math.random() * 6 + 1) == 4)
 		{
 			diceRoll = 4;
 		}
-		else if((int)(Math.random() * 6 + 1) == 5)
+		if((int)(Math.random() * 6 + 1) == 5)
 		{
 			diceRoll = 5;
 		}
-		else if((int)(Math.random() * 6 + 1) == 6)
+		if((int)(Math.random() * 6 + 1) == 6)
 		{
 			diceRoll = 6;
 		}
 		sumRoll = sumRoll + diceRoll;
+		System.out.println(diceRoll);
 	}
 	void show()
 	{
 		//your code here
 		stroke(255);
-		fill(255, 0, 0);
-		rect(dieX, dieY, 30, 30);
+		fill(dieX/2, dieY/2, diceRoll * 40);
+		rect(dieX - 25, dieY - 25, 50, 50, 5);
 		fill(255);
-		text(diceRoll, dieX + 12.5, dieY + 20);
+		if(diceRoll == 1)
+		{
+			ellipse(dieX, dieY, 5, 5);
+		}
+		if(diceRoll == 2)
+		{
+			ellipse(dieX - 10, dieY - 10, 5, 5);
+			ellipse(dieX + 10, dieY + 10, 5, 5);
+		}
+		if(diceRoll == 3)
+		{
+			ellipse(dieX, dieY, 5, 5);
+			ellipse(dieX - 10, dieY - 10, 5, 5);
+			ellipse(dieX + 10, dieY + 10, 5, 5);
+		}
+		if(diceRoll == 4)
+		{
+			ellipse(dieX - 10, dieY - 10, 5, 5);
+			ellipse(dieX + 10, dieY - 10, 5, 5);
+			ellipse(dieX - 10, dieY + 10, 5, 5);
+			ellipse(dieX + 10, dieY + 10, 5, 5);
+		}
+		if(diceRoll == 5)
+		{
+			ellipse(dieX, dieY, 5, 5);
+			ellipse(dieX - 10, dieY - 10, 5, 5);
+			ellipse(dieX + 10, dieY + 10, 5, 5);
+			ellipse(dieX - 10, dieY + 10, 5, 5);
+			ellipse(dieX + 10, dieY - 10, 5, 5);
+		}
+		if(diceRoll == 6)
+		{
+			ellipse(dieX - 10, dieY - 10, 5, 5);
+			ellipse(dieX + 10, dieY - 10, 5, 5);
+			ellipse(dieX - 10, dieY, 5, 5);
+			ellipse(dieX + 10, dieY, 5, 5);
+			ellipse(dieX - 10, dieY + 10, 5, 5);
+			ellipse(dieX + 10, dieY + 10, 5, 5);
+		}
 	}
 }
