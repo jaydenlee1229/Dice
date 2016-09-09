@@ -17,10 +17,12 @@ void draw()
 			one.show();
 		}
 	}
-	fill(255, 0, 0);
+	fill(0);
 	rect(0, 400, 500, 100);
 	fill(255);
-	text("STOP", 200, 450);
+	textSize(30);
+	textAlign(CENTER);
+	text("STOP", 250, 460);
 }
 void mousePressed()
 {
@@ -32,10 +34,17 @@ void mousePressed()
 	else
 	{
 		fill(mouseX, mouseY, 255);
-		textSize(25);
-		textAlign(CENTER);
-		text("Sum of Roll: " + sumRoll, 240, 460);
-		noLoop();
+		for(int colorY = 400; colorY < 500; colorY += 10)
+		{
+			noStroke();
+			fill(colorY, 150, 150);
+			rect(0, colorY, 500, 10);
+			fill(255);
+			textSize(30);
+			textAlign(CENTER);
+			text("Sum of Roll: " + sumRoll, 240, 460);
+			noLoop();
+		}
 	}		
 }
 class Die //models one single dice cube
