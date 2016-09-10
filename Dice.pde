@@ -3,7 +3,8 @@ int sumRoll = 0;
 void setup()
 {
 	size(500, 500);
-	//noLoop();
+	frameRate(1);
+	noLoop();
 }
 void draw()
 {
@@ -17,9 +18,10 @@ void draw()
 			one.show();
 		}
 	}
-	fill(0);
+	noStroke();
+	fill(50, 150, 200);
 	rect(0, 400, 500, 100);
-	fill(255);
+	fill(0);
 	textSize(30);
 	textAlign(CENTER);
 	text("STOP", 250, 460);
@@ -33,18 +35,15 @@ void mousePressed()
 	}
 	else
 	{
-		fill(mouseX, mouseY, 255);
-		for(int colorY = 400; colorY < 500; colorY += 10)
-		{
-			noStroke();
-			fill(colorY, 150, 150);
-			rect(0, colorY, 500, 10);
-			fill(255);
-			textSize(30);
-			textAlign(CENTER);
-			text("Sum of Roll: " + sumRoll, 240, 460);
-			noLoop();
-		}
+		noStroke();
+		fill(50, 150, 200);
+		rect(0, 400, 500, 100);
+		fill(0);
+		textSize(30);
+		textAlign(CENTER);
+		text("SUM OF ROLL: " + sumRoll, 240, 460);
+		sumRoll = 0;
+		noLoop();
 	}		
 }
 class Die //models one single dice cube
@@ -88,8 +87,7 @@ class Die //models one single dice cube
 		{
 			diceRoll = 6;
 		}
-		sumRoll += diceRoll;
-		System.out.println(diceRoll);
+		
 	}
 	void show()
 	{
@@ -137,5 +135,6 @@ class Die //models one single dice cube
 			ellipse(dieX - 10, dieY + 10, 5, 5);
 			ellipse(dieX + 10, dieY + 10, 5, 5);
 		}
+		sumRoll += diceRoll;
 	}
 }
