@@ -1,18 +1,17 @@
 Die one;
-int sumRoll = 0;
+float sumRoll = 0;
 void setup()
 {
 	size(500, 500);
-	frameRate(1);
 	noLoop();
 }
 void draw()
 {
 	//your code here
-	background(0);
-	for(int x = 25; x < 499; x += 50)
+	sumRoll = 0;
+	for(int y = 25; y < 449; y += 50)
 	{
-		for(int y = 25; y < 399; y += 50)
+		for(int x = 25; x < 499; x += 50)
 		{
 			one = new Die(x, y);
 			one.show();
@@ -20,7 +19,7 @@ void draw()
 	}
 	noStroke();
 	fill(50, 150, 200);
-	rect(0, 400, 500, 100);
+	rect(0, 450, 500, 100);
 	fill(0);
 	textSize(30);
 	textAlign(CENTER);
@@ -37,12 +36,12 @@ void mousePressed()
 	{
 		noStroke();
 		fill(50, 150, 200);
-		rect(0, 400, 500, 100);
+		rect(0, 450, 500, 100);
 		fill(0);
-		textSize(30);
+		textSize(15);
 		textAlign(CENTER);
-		text("SUM OF ROLL: " + sumRoll, 240, 460);
-		sumRoll = 0;
+		text("SUM OF ROLL: " + (int)sumRoll, 135, 485);
+		text("AVERAGE ROLL: " + sumRoll / 80, 335, 485);
 		noLoop();
 	}		
 }
@@ -136,5 +135,6 @@ class Die //models one single dice cube
 			ellipse(dieX + 10, dieY + 10, 5, 5);
 		}
 		sumRoll += diceRoll;
+		float averageRoll = sumRoll / 80;
 	}
 }
