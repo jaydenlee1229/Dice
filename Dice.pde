@@ -7,7 +7,6 @@ void setup()
 }
 void draw()
 {
-	//your code here
 	sumRoll = 0;
 	for(int y = 25; y < 449; y += 50)
 	{
@@ -21,13 +20,13 @@ void draw()
 	fill(50, 150, 200);
 	rect(0, 450, 500, 100);
 	fill(0);
-	textSize(30);
+	textSize(15);
 	textAlign(CENTER);
-	text("STOP", 250, 460);
+	text("STOP", 250, 480);
 }
 void mousePressed()
 {
-	if(mouseY <= 400)
+	if(mouseY <= 450)
 	{
 		redraw();
 		loop();
@@ -40,27 +39,24 @@ void mousePressed()
 		fill(0);
 		textSize(15);
 		textAlign(CENTER);
-		text("SUM OF ROLL: " + (int)sumRoll, 135, 485);
-		text("AVERAGE ROLL: " + sumRoll / 80, 335, 485);
+		text("SUM OF ROLL: " + (int)sumRoll, 145, 480);
+		text("AVERAGE ROLL: " + sumRoll / 80, 345, 480);
 		noLoop();
 	}		
 }
-class Die //models one single dice cube
+class Die
 {
-	//variable declarations here
 	int diceRoll;
 	int dieX;
 	int dieY;
 	Die(int x, int y) //constructor
 	{
-		//variable initializations here
 		dieX = x;
 		dieY = y;
 		roll();
 	}
 	void roll()
 	{
-		//your code here
 		int diceValue = (int)(Math.random() * 6 + 1);
 		if(diceValue == 1)
 		{
@@ -90,7 +86,6 @@ class Die //models one single dice cube
 	}
 	void show()
 	{
-		//your code here
 		stroke(255);
 		fill(dieX/2, dieY/2, diceRoll * 40);
 		rect(dieX - 25, dieY - 25, 50, 50, 5);
@@ -135,6 +130,6 @@ class Die //models one single dice cube
 			ellipse(dieX + 10, dieY + 10, 5, 5);
 		}
 		sumRoll += diceRoll;
-		float averageRoll = sumRoll / 80;
+		float averageRoll = sumRoll / 90;
 	}
 }
