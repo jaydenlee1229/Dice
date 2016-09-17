@@ -49,7 +49,7 @@ class Die
 	int diceRoll;
 	int dieX;
 	int dieY;
-	Die(int x, int y) //constructor
+	Die(int x, int y)
 	{
 		dieX = x;
 		dieY = y;
